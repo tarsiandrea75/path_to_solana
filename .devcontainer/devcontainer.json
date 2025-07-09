@@ -3,10 +3,10 @@
   "build": {
     "dockerfile": "Dockerfile",
     "args": {
-      "USERNAME": "${localEnv:USER}"
+      "USERNAME": "${localEnv:USER:-dev}"
     }
   },
-  "remoteUser": "${localEnv:USER}",
+  "remoteUser": "${localEnv:USER:-dev}",
   "settings": {
     "terminal.integrated.defaultProfile.linux": "bash",
     "git.enableCommitSigning": true
