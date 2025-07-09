@@ -2,8 +2,10 @@
   "name": "Rust Dev Container",
   "build": {
     "dockerfile": "Dockerfile",
+    "args": {
+      "USERNAME": "dev"
+    }
   },
-  // Esto lo pueden modificar si quieren un usuario distinto de dev
   "remoteUser": "dev",
   "settings": {
     "terminal.integrated.defaultProfile.linux": "bash",
