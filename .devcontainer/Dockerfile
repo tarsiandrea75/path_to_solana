@@ -33,7 +33,7 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME || echo "fallo el chmod"
 
 # Instalar las dependencias del curso
-RUN curl --proto '=https' --tlsv1.2 -sSfL https://solana-install.solana.workers.dev | sh -s -- -y
+RUN curl --proto '=https' --tlsv1.2 -sSfL https://solana-install.solana.workers.dev | bash
 
 # Instalar starship
 RUN curl -sS https://starship.rs/install.sh | sh -s -- -y
