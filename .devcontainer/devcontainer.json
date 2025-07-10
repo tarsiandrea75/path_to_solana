@@ -2,11 +2,7 @@
   "name": "Rust Dev Container",
   "build": {
     "dockerfile": "Dockerfile",
-    "args": {
-      "USERNAME": "dev"
-    }
   },
-  "remoteUser": "dev",
   "settings": {
     "terminal.integrated.defaultProfile.linux": "bash",
     "git.enableCommitSigning": true
