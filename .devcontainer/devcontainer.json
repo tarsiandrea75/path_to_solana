@@ -1,0 +1,18 @@
+{
+  "name": "Rust Dev Container",
+  "build": {
+    "dockerfile": "Dockerfile",
+  },
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "git.enableCommitSigning": true
+  },
+  "extensions": [
+    "rust-lang.rust-analyzer",
+    "vadimcn.vscode-lldb",
+    "ms-vscode.cpptools",
+    "eamodio.gitlens"
+  ],
+  "postCreateCommand": ".devcontainer/install-dotfiles.sh && .devcontainer/gpg-setup.sh && .devcontainer/nvim-setup.sh",
+}
+

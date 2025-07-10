@@ -1,0 +1,34 @@
+add_newline = true
+
+format = """
+[┌───────────────────>](bold green)$memory_usage$username$hostname$directory$shlvl
+[│](bold green)$git_branch$git_commit$git_state$git_status$docker_context$container$rust$sudo$line_break$status$character$package
+[└─>](bold green)"""
+
+command_timeout = 3000
+
+[directory]
+truncation_length = 10
+
+[git_commit]
+commit_hash_length = 8
+only_detached = false
+tag_disabled = false
+
+[git_status]
+ahead = '▲'
+behind = '▼'
+conflicted = '✘'
+deleted = 'x.X'
+
+[git_branch]
+always_show_remote = true
+
+[status]
+map_symbol = true
+pipestatus = true
+recognize_signal_code = true
+disabled = false
+
+[memory_usage]
+threshold = 10
