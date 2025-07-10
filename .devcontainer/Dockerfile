@@ -32,10 +32,10 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="/root/.cargo/bin:$PATH"
 
 # Add user
-RUN groupadd --gid $USER_GID $USERNAME \
-    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME -s /bin/bash \
-    && echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/$USERNAME \
-    && chmod 0440 /etc/sudoers.d/$USERNAME
+RUN groupadd --gid $USER_GID $USERNAME || echo "fallo el groupadd" \
+    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME -s /bin/bash || echo "fallo el useradd"\
+    && echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/$USERNAME || echo "fallo el sudoers"\
+    && chmod 0440 /etc/sudoers.d/$USERNAME || echo "fallo el chmod"
 
 # Install starship
 RUN curl -sS https://starship.rs/install.sh | sh -s -- -y
