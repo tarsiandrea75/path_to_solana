@@ -2,9 +2,9 @@ FROM ubuntu:24.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-ARG USERNAME=vscode
-ARG USER_UID=1000
-ARG USER_GID=1000
+ARG USERNAME=solanero
+ARG USER_UID=1001
+ARG USER_GID=1001
 
 # Instalar dependencias
 RUN apt-get update && apt-get install -y \
@@ -32,9 +32,9 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="/root/.cargo/bin:$PATH"
 
 # Add user
-RUN groupadd --gid $USER_GID $USERNAME || echo "fallo el groupadd" \
-    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME -s /bin/bash || echo "fallo el useradd"\
-    && echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/$USERNAME || echo "fallo el sudoers"\
+RUN groupadd --gid $USER_GID $USERNAME \
+    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME -s /bin/bash \
+    && echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME || echo "fallo el chmod"
 
 # Install starship
