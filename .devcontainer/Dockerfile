@@ -47,7 +47,7 @@ ENV PATH="/home/${USERNAME}/.cargo/bin:/home/${USERNAME}/.local/bin:$PATH"
 COPY starship.toml /home/${USERNAME}/.config/starship.toml
 
 # Dar permisos correctos y setear la variable de entorno
-RUN chown -R ${USERNAME}:${USERNAME} /home/${USERNAME}/.config
+RUN chown ${USERNAME}:${USERNAME} /home/${USERNAME}/.config/starship.toml
 
 ENV STARSHIP_CONFIG=/home/${USERNAME}/.config/starship.toml
 
