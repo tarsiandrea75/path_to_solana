@@ -46,9 +46,6 @@ ENV PATH="/home/${USERNAME}/.cargo/bin:/home/${USERNAME}/.local/bin:$PATH"
 # Crear la carpeta de configuración de starship y copiar el archivo
 COPY starship.toml /home/${USERNAME}/.config/starship.toml
 
-# Dar permisos correctos y setear la variable de entorno
-RUN chown ${USERNAME}:${USERNAME} /home/${USERNAME}/.config/starship.toml
-
 ENV STARSHIP_CONFIG=/home/${USERNAME}/.config/starship.toml
 
 # Agregar el prompt de starship
