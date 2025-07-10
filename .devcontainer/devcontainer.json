@@ -14,9 +14,5 @@
     "eamodio.gitlens"
   ],
   "postCreateCommand": ".devcontainer/install-dotfiles.sh && .devcontainer/gpg-setup.sh && .devcontainer/nvim-setup.sh",
-  // Cambiar esto para que apunte a tus dotfiles o eliminar.
-  "containerEnv": {
-    "DOTFILES_REPO": "https://github.com/YOUR_USER/YOUR_DOTFILES.git"
-  }
 }
 

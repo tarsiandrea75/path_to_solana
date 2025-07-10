@@ -1,6 +1,15 @@
 #!/bin/bash
 set -e
 
+echo "[neovim] Instalando Neovim nightly..."
+
+# Add Neovim unstable PPA
+sudo apt-get update
+sudo apt-get install -y software-properties-common
+sudo add-apt-repository -y ppa:neovim-ppa/unstable
+sudo apt-get update
+sudo apt-get install -y neovim
+
 echo "[neovim] Installing lazy.nvim and Rust tooling config..."
 
 NVIM_CONFIG="$HOME/.config/nvim"
