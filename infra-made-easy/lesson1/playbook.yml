@@ -1,0 +1,29 @@
+---
+- name: Configura Server Web con Nginx e UFW
+  hosts: webserver
+  become: yes
+  vars:
+    ansible_user: ubuntu
+    ansible_ssh_private_key_file: ~/infra-made-easy.pem
+
+  tasks:
+    - name: Actualiza cache paquetes apt
+      apt:
+        update_cache: yes
+
+    - name: Instala Nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Permite el trafico 'Nginx Full' y 'OpenSSH' sobre UFW
+      community.general.ufw:
+        rule: allow
+        name: "{{ item }}"
+      loop:
+        - 'Nginx Full'
+        - 'OpenSSH'
+
+    - name: Habilita el firewall UFW
+      community.general.ufw:
+        state: enabled
