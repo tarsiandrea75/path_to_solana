@@ -2,5 +2,7 @@
 /target
 # Ignorar archivos de compilación de rust en el directorio de clases
 /clases/clase*/target
-test-ledger/
+/test-ledger
+/test-ledger/
+test-ledger
 test-ledger/

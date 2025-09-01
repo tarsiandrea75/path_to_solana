@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solana Vault dApp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .btn {
+            transition: all 0.2s ease-in-out;
+        }
+        .btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        .btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-white flex items-center justify-center min-h-screen">
+
+    <div class="w-full max-w-md bg-slate-800 rounded-2xl shadow-2xl p-8 space-y-6">
+        
+        <!-- Header -->
+        <div class="text-center">
+            <h1 class="text-3xl font-bold text-slate-100">Solana Vault</h1>
+            <p class="text-slate-400 mt-2">La tua cassaforte personale on-chain</p>
+        </div>
+
+        <!-- Connessione Wallet -->
+        <button id="connectButton" class="btn w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 px-4 rounded-lg">
+            Connetti il Wallet
+        </button>
+
+        <!-- Stato del Vault (nascosto all'inizio) -->
+        <div id="vaultState" class="bg-slate-900/50 p-6 rounded-lg text-center hidden">
+            <h2 class="text-lg font-semibold text-slate-300">Stato del Vault</h2>
+            <p class="text-3xl font-bold text-cyan-400 mt-2" id="vaultBalance">-- SOL</p>
+            <p class="text-xs text-slate-500 mt-1" id="vaultAddress">Indirizzo: --</p>
+        </div>
+        
+        <!-- Messaggio "Nessun Vault" (nascosto all'inizio) -->
+        <div id="noVaultState" class="bg-slate-900/50 p-6 rounded-lg text-center hidden">
+             <p class="text-slate-300">Nessun vault trovato per questo wallet.</p>
+             <button id="initializeButton" class="btn mt-4 bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-2 px-4 rounded-lg">
+                Crea il Vault
+            </button>
+        </div>
+
+        <!-- Azioni (nascosto all'inizio) -->
+        <div id="actions" class="space-y-4 hidden">
+            <div class="relative">
+                <input type="number" id="amountInput" placeholder="0.0" step="0.1" class="w-full bg-slate-700 text-white placeholder-slate-400 border border-slate-600 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                <span class="absolute right-4 top-3 text-slate-400">SOL</span>
+            </div>
+            <div class="flex space-x-4">
+                <button id="depositButton" class="btn w-full bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-4 rounded-lg">Deposita</button>
+                <button id="withdrawButton" class="btn w-full bg-amber-600 hover:bg-amber-500 text-white font-bold py-3 px-4 rounded-lg">Preleva</button>
+            </div>
+            <button id="closeButton" class="btn w-full bg-red-700 hover:bg-red-600 text-white font-bold py-3 px-4 rounded-lg">Chiudi Vault</button>
+        </div>
+
+        <!-- Messaggi di Stato -->
+        <div id="statusMessage" class="text-center text-sm text-slate-400 min-h-[20px]"></div>
+
+    </div>
+
+    <!-- Carichiamo il nostro script principale, che Vite assemblerà per noi -->
+    <script type="module" src="/main.js"></script>
+
+</body>
+</html>
+
