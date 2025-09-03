@@ -1,8 +1,20 @@
 {
-        "name": "Rust Dev Container",
-        "build": {
-                "dockerfile": "Dockerfile"
+       "name": "Rust Dev Container",
+       "build": {
+                "dockerfile": "Dockerfile",
+                // --- INIZIO MODIFICHE ---
+                "args": {
+                // Passa dinamicamente l'utente, l'UID e il GID dal tuo ambiente WSL al Dockerfile
+                "USERNAME": "${localEnv:USER}",
+                "USER_UID": "1000", // Verifica con 'id -u' nel tuo terminale WSL
+                "USER_GID": "1000"  // Verifica con 'id -g' nel tuo terminale WSL
+                }
+                // --- FINE MODIFICHE ---
         },
+
+        // --- RIGA AGGIUNTA ---
+        // Assicura che VS Code si connetta come l'utente corretto
+        "remoteUser": "${localEnv:USER}",
         "customizations": {
                 "vscode": {
                         "settings": {
